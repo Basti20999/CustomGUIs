@@ -1,0 +1,441 @@
+guis:
+  media:
+    command: media
+    title: "#9863E7ᴍᴇᴅɪᴀ ʀᴀɴᴋ"  # Note: Title with hex color if needed; the translator will handle # to §#
+    size: 27
+    readonly: true
+    items:
+      13:
+        material: PURPLE_CANDLE
+        name: "#9863E7&lMEDIA RANK"
+        lore:
+          - "&f&lAnforderungen &r&8(&r&7&nNur eine benötigt!&r&8)"
+          - ""
+          - "#00c1fe⏺ &fTikTok (Video) &8» &72K Aufrufe"
+          - "#00c1fe⏺ &fTikTok (Stream) &8» &710 Durchschnittliche Zuschauer"
+          - "#00c1fe⏺ &fYouTube (Video) &8» &7500 Aufrufe"
+          - "#00c1fe⏺ &fYouTube (Short) &8» &71.5K Aufrufe"
+          - "#00c1fe⏺ &fYouTube (Stream) &8» &75 Durchschnittliche Zuschauer"
+          - "#00c1fe⏺ &fTwitch (Stream) &8» &75 Durchschnittliche Zuschauer"
+          - ""
+          - "&7Streams/Videos regelmäßig pro Woche"
+          - "&7IP sowie Port des Servers muss deutlich zu sehen sein"
+          - "&7Kein anderer Server darf sichtbar in Videos sein"
+          - ""
+          - "&fTicket öffnen: &7/discord"
+        command: discord
+
+  rules:
+    command: rules
+    title: "ʀᴜʟᴇꜱ"
+    size: 27
+    readonly: true
+    items:
+      11:
+        material: KNOWLEDGE_BOOK
+        name: "#7afc00&lCLIENT-REGELN"
+        lore:
+          - "#7afc00⏺ &fKeine gehackten Clients"
+          - "#7afc00⏺ &fKeine Bewegungs-Mods"
+          - "#7afc00⏺ &fKeine Inventar-Mods"
+          - "#7afc00⏺ &fKeine Gesundheitsanzeigen"
+          - "#7afc00⏺ &fKein Radar"
+          - "#7afc00⏺ &fKein Freecam"
+          - "#7afc00⏺ &fKein Auto-Platzieren"
+          - "#7afc00⏺ &fKeine schädlichen Makros oder Skripte"
+      13:
+        material: KNOWLEDGE_BOOK
+        name: "#f97603&lALLGEMEINE REGELN"
+        lore:
+          - "#f97603⏺ &fKein Ausnutzen unbeabsichtigter Bugs"
+          - "#f97603⏺ &fKein Versuch, zu duplizieren"
+          - "#f97603⏺ &fKein Duplizieren von Gegenständen"
+          - "#f97603⏺ &fKein IRL-Handel"
+          - "#f97603⏺ &fKein Cross-Server-Handel"
+          - "#f97603⏺ &fKein Finden oder Nutzen des Seeds"
+          - "#f97603⏺ &fKeine Nachahmung von Teammitgliedern"
+          - "#f97603⏺ &fKein Umgehen von Strafen"
+          - "#f97603⏺ &fKein Lügen gegenüber Teammitgliedern"
+          - "#f97603⏺ &fKein Doxxing, Swatting oder DDoSing"
+          - "#f97603⏺ &fMelde alle Bugs, Glitches und Cheater"
+      15:
+        material: KNOWLEDGE_BOOK
+        name: "#03a3f9&lCHAT-REGELN"
+        lore:
+          - "#03a3f9⏺ &fKein Spammen & Aufruhr"
+          - "#03a3f9⏺ &fKein Belästigen & Beleidigen anderer"
+          - "#03a3f9⏺ &fKeine Weitergabe von fremden Informationen"
+          - "#03a3f9⏺ &fKeine Werbung oder Promotion"
+          - "#03a3f9⏺ &fKein Rassismus, keine Diskriminierung oder Hassrede"
+          - "#03a3f9⏺ &fKeine Morddrohungen oder Selbstmordaufforderungen"
+
+  arena:
+    command: pvp
+    title: "&8ᴀʀᴇɴᴀѕ"
+    size: 27
+    readonly: true
+    items:
+      0:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      1:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      2:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      3:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      4:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      5:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      6:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      7:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      8:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      12:
+        material: SHIELD
+        name: "#FC0000&lPVP ARENA"
+        lore:
+          - "&f"
+          - "&fKlick um dich #FC0000random"
+          - "&fzu teleportieren"
+          - "&f"
+        command: pvparena
+      14:
+        material: END_CRYSTAL
+        name: "#FC0000&lCPVP ARENA"
+        lore:
+          - "&f"
+          - "&fKlick um dich #FC0000random"
+          - "&fzu teleportieren"
+          - "&f"
+        command: cpvparena
+      18:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      19:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      20:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      21:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      22:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      23:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      24:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      25:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      26:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+
+  ranks:
+    command: ranks
+    title: "&8ʀᴀɴᴋѕ"
+    size: 27
+    readonly: true
+    items:
+      0:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      1:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      2:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      3:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      4:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      5:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      6:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      7:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      8:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      9:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      10:
+        material: LIME_BANNER
+        name: "#00ff55&lELITE RANK"
+        lore:
+          - "&f"
+          - "&f&nFeatures:"
+          - "&f"
+          - "&8 ● #00c1feElite &fPrefix"
+          - "&8 ● #00c1fe5 Slots &fim Auktionshaus"
+          - "&8 ● #00c1fe3 Homes"
+          - "&8 ● #00c1fe/heal &f(Alle 2min Heilen)"
+          - "&8 ● #00c1fe/hat &f(Items auf den Kopf)"
+          - "&8 ● #00c1fe/trash &f(Mülleimer)"
+          - "&8 ● #00c1fe/craft &f(Werkbank)"
+          - "&8 ● #00c1fe/anvil &f(Amboss)"
+          - "&8 ● #00c1fe/vaults &f(2 Stück)"
+          - "&8 ● #00c1fe/hide &f(Nametag verstecken)"
+          - "&f"
+      11:
+        material: LIGHT_BLUE_BANNER
+        name: "#00d5ff&lNITRO RANK"
+        lore:
+          - "&f"
+          - "&f&nFeatures:"
+          - "&f"
+          - "&8 ● #00c1feNitro &fPrefix"
+          - "&8 ● #00c1fe8 Slots &fim Auktionshaus"
+          - "&8 ● #00c1fe5 Homes"
+          - "&8 ● #00c1fe/heal &f(Alle 2min Heilen)"
+          - "&8 ● #00c1fe/hat &f(Items auf den Kopf)"
+          - "&8 ● #00c1fe/nightvision &f(Night Vision aktivieren)"
+          - "&8 ● #00c1fe/trash &f(Mülleimer)"
+          - "&8 ● #00c1fe/anvil &f(Amboss)"
+          - "&8 ● #00c1feGems überall bekommen"
+          - "&8 ● #00c1fe/vaults &f(3 Stück)"
+          - "&8 ● #00c1fe/hide &f(Nametag verstecken)"
+          - "&f"
+      12:
+        material: RED_BANNER
+        name: "#FC0000&lMASTER RANK"
+        lore:
+          - "&f"
+          - "&f&nFeatures:"
+          - "&f"
+          - "&8 ● #00c1feMaster &fPrefix"
+          - "&8 ● #00c1fe15 Slots &fim Auktionshaus"
+          - "&8 ● #00c1fe5 Homes"
+          - "&8 ● #00c1fe/heal &f(Alle 2min Heilen)"
+          - "&8 ● #00c1fe/hat &f(Items auf den Kopf)"
+          - "&8 ● #00c1fe/nightvision &f(Night Vision aktivieren)"
+          - "&8 ● #00c1fe/trash &f(Mülleimer)"
+          - "&8 ● #00c1fe/anvil &f(Amboss)"
+          - "&8 ● #00c1fe/ec &f(Enderchest)"
+          - "&8 ● #00c1fe/craft &f(Werkbank)"
+          - "&8 ● #00c1fe/tpaall &f(TPA-All Anfrage)"
+          - "&8 ● #00c1feGems überall bekommen"
+          - "&8 ● #00c1fe/vaults &f(5 Stück)"
+          - "&8 ● #00c1fe/hide &f(Nametag verstecken)"
+          - "&f"
+      13:
+        material: YELLOW_BANNER
+        name: "#FFCF00&lTITAN RANK"
+        lore:
+          - "&f"
+          - "&f&nFeatures:"
+          - "&f"
+          - "&8 ● #00c1feTitan &fPrefix"
+          - "&8 ● #00c1fe30 Slots &fim Auktionshaus"
+          - "&8 ● #00c1fe5 Homes"
+          - "&8 ● #00c1fe/heal &f(Alle 2min Heilen)"
+          - "&8 ● #00c1fe/hat &f(Items auf den Kopf)"
+          - "&8 ● #00c1fe/nightvision &f(Night Vision aktivieren)"
+          - "&8 ● #00c1fe/trash &f(Mülleimer)"
+          - "&8 ● #00c1fe/anvil &f(Amboss)"
+          - "&8 ● #00c1fe/ec &f(Enderchest)"
+          - "&8 ● #00c1fe/craft &f(Werkbank)"
+          - "&8 ● #00c1fe/kittycannon &f(Katzen schießen)"
+          - "&8 ● #00c1fe/ultra &f(Alle 12h eine Ultra Crate)"
+          - "&8 ● #00c1fe/near &f(Spieler im 50 Blöcke Radius sehen)"
+          - "&8 ● #00c1fe/lag &f(TPS vom Server)"
+          - "&8 ● #00c1fe/repair &f(Alle 60s ein Item reparieren)"
+          - "&8 ● #00c1fe/tpaall &f(TPA-All Anfrage)"
+          - "&8 ● #00c1feGems überall bekommen"
+          - "&8 ● #00c1fe/vaults &f(9 Stück)"
+          - "&8 ● #00c1fe/hide &f(Nametag verstecken)"
+          - "&f"
+      14:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      15:
+        material: PINK_BANNER
+        name: "#FF83C6&lDISCORD BOOSTER RANK"
+        lore:
+          - "&f"
+          - "&f&nFeatures:"
+          - "&f"
+          - "&8 ● #00c1feTitan &fPrefix"
+          - "&8 ● #00c1fe30 Slots &fim Auktionshaus"
+          - "&8 ● #00c1fe5 Homes"
+          - "&8 ● #00c1fe/heal &f(Alle 2min Heilen)"
+          - "&8 ● #00c1fe/hat &f(Items auf den Kopf)"
+          - "&8 ● #00c1fe/nightvision &f(Night Vision aktivieren)"
+          - "&8 ● #00c1fe/trash &f(Mülleimer)"
+          - "&8 ● #00c1fe/anvil &f(Amboss)"
+          - "&8 ● #00c1fe/ec &f(Enderchest)"
+          - "&8 ● #00c1fe/craft &f(Werkbank)"
+          - "&8 ● #00c1fe/kittycannon &f(Katzen schießen)"
+          - "&8 ● #00c1fe/ultra &f(Alle 12h eine Ultra Crate)"
+          - "&8 ● #00c1fe/near &f(Spieler im 50 Blöcke Radius sehen)"
+          - "&8 ● #00c1fe/lag &f(TPS vom Server)"
+          - "&8 ● #00c1fe/repair &f(Alle 60s ein Item reparieren)"
+          - "&8 ● #00c1fe/tpaall &f(TPA-All Anfrage)"
+          - "&8 ● #00c1feGems überall bekommen"
+          - "&8 ● #00c1fe/vaults &f(9 Stück)"
+          - "&8 ● #00c1fe/hide &f(Nametag verstecken)"
+          - "&f"
+      16:
+        material: PURPLE_BANNER
+        name: "#9863E7&lMEDIA RANK"
+        lore:
+          - "&f"
+          - "&f&nFeatures:"
+          - "&f"
+          - "&8 ● #00c1feMedia &fPrefix"
+          - "&8 ● #00c1fe15 Slots &fim Auktionshaus"
+          - "&8 ● #00c1fe5 Homes"
+          - "&8 ● #00c1fe/live <link> &f(Livestream Werbung im Chat)"
+          - "&8 ● #00c1fe/heal &f(Alle 2min Heilen)"
+          - "&8 ● #00c1fe/hat &f(Items auf den Kopf)"
+          - "&8 ● #00c1fe/nightvision &f(Night Vision aktivieren)"
+          - "&8 ● #00c1fe/trash &f(Mülleimer)"
+          - "&8 ● #00c1fe/anvil &f(Amboss)"
+          - "&8 ● #00c1fe/ec &f(Enderchest)"
+          - "&8 ● #00c1fe/craft &f(Werkbank)"
+          - "&8 ● #00c1fe/tpaall &f(TPA-All Anfrage)"
+          - "&8 ● #00c1feGems überall bekommen"
+          - "&8 ● #00c1fe/hide &f(Nametag verstecken)"
+          - "&f"
+      17:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      18:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      19:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      20:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      21:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      22:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      23:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      24:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      25:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+      26:
+        material: BLACK_STAINED_GLASS_PANE
+        name: "&f"
+
+  trash:
+    command: trash
+    title: "Mülleimer"
+    size: 54
+    readonly: false
+    items: {}
+
+  help:
+    command: help
+    title: "ᴛᴜᴛᴏʀɪᴀʟ"
+    size: 27
+    readonly: true
+    items:
+      10:
+        material: OAK_SAPLING
+        name: "#7CFC00&lWie startet man?"
+        lore:
+          - ""
+          - "&fHole dir alle 12 Stunden"
+          - "&f&nGRATIS&f Sachen mit #7CFC00/daily &fab!"
+          - ""
+          - "&fMit #7CFC00/rtp &fkommst du in die Welten,"
+          - "&fbaue dort deine Base oder Farms für Geld."
+        command: rtp
+      11:
+        material: NETHER_STAR
+        name: "#E43A73&lDie Währung Gems"
+        lore:
+          - "&f#E43A73Gems &fbekommst du so:"
+          - ""
+          - "#E43A73- &fKills &7(1-15 pro Kill)"
+          - "#E43A73- &fAlle 2min &7(5x Gems Standard, upgraden mit /gemslevel)"
+          - "#E43A73- &fTägliche Belohnung &7(/daily)"
+          - ""
+          - "&fKaufe damit Spawner/Keys mit #E43A73/gems shop"
+        command: gemslevel
+      12:
+        material: SKELETON_SKULL
+        name: "#FFCF00&lSpawner"
+        lore:
+          - ""
+          - "&fDu kannst mit Spawnern Geld verdienen,"
+          - "&fplatziere sie dafür und stehe etwas AFK."
+          - "&fSie generieren dir #FFCF00Items und XP"
+          - ""
+          - "&fKaufe dir Spawner mit #FFCF00/gems shop"
+        command: gems shop
+      14:
+        material: EMERALD
+        name: "#7CFC00&lGeld verdienen"
+        lore:
+          - ""
+          - "&fVerkaufe Items mit #7CFC00/sell"
+          - "&fum Geld zu verdienen."
+          - ""
+          - "&fFarms: &7Farme Items wie Zuckerrohr, Bambus,"
+          - "&7Sea Pickles um viel Geld zu verdienen."
+        command: sell
+      15:
+        material: TOTEM_OF_UNDYING
+        name: "#F97603&lWichtige Befehle"
+        lore:
+          - ""
+          - "&fFighte gegen Spielern mit #F97603/rtpqueue&f,"
+          - "&f#F97603/cpvparena &foder #F97603/pvparena"
+          - ""
+          - "#F97603- &f/shop &7(Item Shop)"
+          - "#F97603- &f/settings &7(Einstellungen)"
+          - "#F97603- &f/ah &7(Auktionshaus)"
+          - "#F97603- &f/home &7(Homes)"
+          - "#F97603- &f/spawn &7(Spawn)"
+          - "#F97603- &f/order &7(Bestellungen)"
+          - "#F97603- &f/vaults &7(Vaults)"
+          - "#F97603- &f/bounty &7(Kopfgeld)"
+        command: skript:settings
+      16:
+        material: LIGHT_BLUE_DYE
+        name: "#00C1FE&lDiscord Server"
+        lore:
+          - ""
+          - "&fUm keine Neuigkeiten, Updates,"
+          - "&fGiveaways und mehr zu verpassen,"
+          - "&ftrete unserem #00C1FEDiscord Server &fbei!"
+          - ""
+          - "&f→ #00C1FE/discord"
+        command: discord

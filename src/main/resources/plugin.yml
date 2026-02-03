@@ -1,0 +1,6 @@
+name: CustomGUIs
+main: com.basti20999.customGUIs.CustomGUIs
+version: 1.0
+api-version: 1.21
+description: A plugin to create custom GUIs from config.
+author: Basti20999
