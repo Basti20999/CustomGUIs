@@ -1,6 +1,31 @@
 name: CustomGUIs
 main: com.basti20999.customGUIs.CustomGUIs
-version: 1.0
-api-version: 1.21
-description: A plugin to create custom GUIs from config.
+version: ${project.version}
+api-version: '1.21'
+description: Define custom inventory GUIs entirely from a YAML config file.
 author: Basti20999
+
+commands:
+  cgu:
+    description: CustomGUIs admin command
+    usage: /cgu <reload|list|open|help>
+    permission: customguis.admin
+    aliases: [customguis]
+
+permissions:
+  customguis.admin:
+    description: Grants all CustomGUIs admin subcommands
+    default: op
+    children:
+      customguis.admin.reload: true
+      customguis.admin.list: true
+      customguis.admin.open: true
+  customguis.admin.reload:
+    description: Allows running /cgu reload
+    default: op
+  customguis.admin.list:
+    description: Allows running /cgu list
+    default: op
+  customguis.admin.open:
+    description: Allows running /cgu open
+    default: op
