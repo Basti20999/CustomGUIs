@@ -6,11 +6,19 @@ A lightweight Paper plugin that lets you create custom inventory GUIs entirely f
 
 - Define unlimited inventory GUIs in `config.yml`
 - Each GUI gets its own in-game command (e.g. `/help`, `/rules`)
-- Supports `&` color codes and `#RRGGBB` hex colors in titles, item names, and lore
+- Per-click-type dispatch (left, right, shift-left, shift-right, middle)
+- Run actions as the player **or** as the console
+- `open:` action to chain GUIs together (navigation menus)
+- `border:` and `fill-empty:` shortcuts — no more pasting 16 filler entries
+- Per-item permissions (item is hidden if the player lacks the node)
+- Built-in placeholders: `%player%`, `%player_uuid%`, `%world%`, `%x%`, `%y%`, `%z%`
+- Sounds on open and on click
+- Item glow / enchantment glint
+- `&` color codes and `#RRGGBB` hex colors in titles, item names, and lore
 - Configurable inventory size (9 – 54 slots)
 - Read-only mode to prevent players from taking items
-- Per-item click commands — execute any command when a player clicks an item
 - Hot-reload without restarting the server (`/cgu reload`)
+- Tab completion on `/cgu`
 
 ## Requirements
 
@@ -29,10 +37,13 @@ A lightweight Paper plugin that lets you create custom inventory GUIs entirely f
 
 ## Commands
 
-| Command      | Description                     | Permission        |
-|--------------|---------------------------------|-------------------|
-| `/<command>` | Opens the GUI with that command | *(none by default)* |
-| `/cgu reload`| Reloads `config.yml`            | `customguis.admin` |
+| Command                       | Description                                | Permission                |
+|-------------------------------|--------------------------------------------|---------------------------|
+| `/<command>`                  | Opens the GUI with that command            | *(none by default)*       |
+| `/cgu reload`                 | Reloads `config.yml`                       | `customguis.admin.reload` |
+| `/cgu list`                   | Lists all loaded GUIs                      | `customguis.admin.list`   |
+| `/cgu open <id> [player]`     | Opens a GUI for yourself or another player | `customguis.admin.open`   |
+| `/cgu help`                   | Shows the admin help                       | *(none)*                  |
 
 > **Note:** After a reload, newly added GUI commands become available immediately.
 > Commands that were *removed* from the config remain registered until the next server restart (Bukkit limitation), but they will no longer open any inventory.
@@ -46,19 +57,63 @@ The config file lives at `plugins/CustomGUIs/config.yml`.
 ```yaml
 guis:
   <gui-id>:
-    command: <command>       # In-game command (without /)
-    title: "<title>"         # Inventory title — supports & and #RRGGBB colors
-    size: <9|18|27|36|45|54> # Number of slots (must be a multiple of 9)
-    readonly: <true|false>   # Prevent players from moving items (default: true)
+    command: <command>            # In-game command (without /)
+    title: "<title>"              # Inventory title — supports & and #RRGGBB colors and placeholders
+    size: <9|18|27|36|45|54>      # Number of slots
+    readonly: <true|false>        # Default: true. Prevents players from moving items.
+    close-on-click: <true|false>  # Default: same as `readonly`
+    open-sound: <SOUND_NAME>      # Optional. Bukkit Sound enum name.
+
+    border:                       # Optional. Fills perimeter slots not in `items`.
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&r"
+
+    fill-empty:                   # Optional. Fills any still-empty slots.
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&r"
+
     items:
-      <slot>:                # Slot index (0-based, top-left = 0)
-        material: <MATERIAL> # Minecraft material name (e.g. DIAMOND, PAPER)
-        name: "<name>"       # Item display name — supports color codes
-        lore:                # Optional list of lore lines
+      <slot>:
+        material: <MATERIAL>
+        name: "<name>"
+        lore:
           - "<line 1>"
           - "<line 2>"
-        command: <command>   # Optional — command run by the player on click (without /)
+        amount: <1-64>            # Default 1
+        glow: <true|false>        # Default false
+        permission: <node>        # Optional. Item hidden if missing.
+        click-sound: <SOUND_NAME> # Optional.
+
+        # ANY-CLICK action (omit if using on-click):
+        command: <command>
+        console-command: <command>
+        open: <gui-id>
+        message: "<text>"
+
+        # OR per-click-type dispatch:
+        on-click:
+          left:        { command: shop }
+          right:       { console-command: "give %player% diamond 1" }
+          shift-left:  { open: another-gui }
+          middle:      { message: "&aHi %player%!" }
 ```
+
+### Action types
+
+| Field             | Effect                                          |
+|-------------------|-------------------------------------------------|
+| `command`         | Runs the command as the clicking player         |
+| `console-command` | Runs the command as the server console          |
+| `open`            | Opens another GUI by its id                     |
+| `message`         | Sends a chat message to the clicking player     |
+
+Multiple action fields can coexist on the same item — they all fire on click.
+
+### Placeholders
+
+Resolved in `title`, item `name`, item `lore`, `message`, `command`, and `console-command`:
+
+`%player%` `%player_uuid%` `%world%` `%x%` `%y%` `%z%`
 
 ### Color codes
 
@@ -74,29 +129,43 @@ guis:
 guis:
   my-menu:
     command: menu
-    title: "&8&lMain Menu"
+    title: "&8&lMain Menu &7- &f%player%"
     size: 27
-    readonly: true
+    open-sound: BLOCK_CHEST_OPEN
+
+    fill-empty:
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&r"
+
     items:
       13:
         material: NETHER_STAR
         name: "#FFD700&lServer Shop"
         lore:
           - ""
-          - "&7Click to open the shop."
+          - "&7Left-click to open the shop."
+          - "&7Right-click for daily reward."
           - ""
-        command: shop
+        glow: true
+        click-sound: UI_BUTTON_CLICK
+        on-click:
+          left:
+            open: shop-menu
+          right:
+            console-command: "give %player% diamond 1"
+            message: "&aDaily diamond claimed!"
 ```
-
-Players can then type `/menu` to open this GUI.
 
 ## Permissions
 
-| Permission        | Description                        | Default |
-|-------------------|------------------------------------|---------|
-| `customguis.admin`| Allows use of `/cgu reload`        | op      |
+| Permission                  | Description                  | Default |
+|-----------------------------|------------------------------|---------|
+| `customguis.admin`          | Parent for all admin nodes   | op      |
+| `customguis.admin.reload`   | Allows `/cgu reload`         | op      |
+| `customguis.admin.list`     | Allows `/cgu list`           | op      |
+| `customguis.admin.open`     | Allows `/cgu open`           | op      |
 
-GUI commands do not have a built-in permission node. Restrict them using your server's permissions plugin if needed.
+GUI commands themselves do not have a built-in permission node. To restrict who can open a GUI, set per-item `permission:` on its entry items, or restrict the command in your permissions plugin.
 
 ## Building from Source
 

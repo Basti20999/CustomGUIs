@@ -3,91 +3,65 @@
 # Define your custom inventory GUIs below.
 #
 # Each GUI entry supports:
-#   command:  The in-game command that opens this GUI (without the slash).
-#   title:    The inventory title. Supports & color codes and #RRGGBB hex colors.
-#   size:     Number of slots (9, 18, 27, 36, 45, or 54).
-#   readonly: If true, players cannot move items in/out of the GUI.
-#   items:    A map of slot numbers (0-based) to item definitions.
+#   command:        In-game command that opens this GUI (without the slash).
+#   title:          Inventory title. Supports & color codes, #RRGGBB hex,
+#                   and placeholders (%player%, %world%, %x%, %y%, %z%).
+#   size:           Number of slots (9, 18, 27, 36, 45, or 54).
+#   readonly:       If true, players cannot move items. Default: true.
+#   close-on-click: If true, the GUI closes after a click action runs.
+#                   Defaults to the value of `readonly`.
+#   open-sound:     Sound to play when the GUI opens (e.g. UI_BUTTON_CLICK).
+#   border:         Item-shape definition that fills the perimeter slots.
+#   fill-empty:     Item-shape definition that fills any still-empty slots.
+#   items:          Map of slot numbers (0-based) to item definitions.
 #
 # Item definition fields:
-#   material: A valid Minecraft material name (e.g. DIAMOND_SWORD, PAPER).
-#   name:     Display name. Supports & color codes and #RRGGBB hex colors.
-#   lore:     A list of lore lines. Supports color codes.
-#   command:  (Optional) A command executed by the player when they click this item.
-#             Do NOT include the leading slash.
+#   material:     Minecraft material name (e.g. DIAMOND_SWORD, PAPER).
+#   name:         Display name. Supports color codes and placeholders.
+#   lore:         List of lore lines. Supports color codes and placeholders.
+#   amount:       Stack size 1-64. Default 1.
+#   glow:         If true, the item shows an enchantment glint. Default false.
+#   permission:   If set, the item is hidden from players lacking this node.
+#   click-sound:  Sound to play when this item is clicked.
+#
+#   Action fields (one or more):
+#     command:         Run as the clicking player.
+#     console-command: Run as the server console.
+#     open:            Open another GUI by id.
+#     message:         Send a chat message to the clicking player.
+#
+#   Per-click-type dispatch (overrides the top-level action fields):
+#     on-click:
+#       left:        { command: shop }
+#       right:       { console-command: "give %player% diamond 1" }
+#       shift-left:  { open: another-gui }
+#       middle:      { message: "&aHi!" }
+#
+# Placeholders (resolved everywhere):
+#   %player%, %player_uuid%, %world%, %x%, %y%, %z%
 #
 # Permissions:
-#   customguis.admin  - Required to use /cgu reload
-#   (GUI commands have no permission by default; add them in your permissions plugin)
-#
-# Reload without restart: /cgu reload
+#   customguis.admin            - parent for all admin subcommands (default: op)
+#   customguis.admin.reload     - /cgu reload
+#   customguis.admin.list       - /cgu list
+#   customguis.admin.open       - /cgu open <gui> [player]
 # -------------------------
 
 guis:
 
-  # --- Example 1: A simple info/help menu ---
+  # --- Example 1: A help/navigation menu using fill-empty + per-click dispatch ---
   example-help:
     command: help
-    title: "&8&lServer Help"
+    title: "&8&lServer Help &7- &f%player%"
     size: 27
     readonly: true
+    open-sound: BLOCK_CHEST_OPEN
+
+    fill-empty:
+      material: BLACK_STAINED_GLASS_PANE
+      name: "&r"
+
     items:
-      # Filler panes in the top and bottom rows
-      0:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      1:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      2:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      3:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      4:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      5:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      6:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      7:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      8:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      18:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      19:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      20:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      21:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      22:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      23:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      24:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      25:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      26:
-        material: BLACK_STAINED_GLASS_PANE
-        name: "&f"
-      # Content items
       10:
         material: BOOK
         name: "&e&lRules"
@@ -95,15 +69,21 @@ guis:
           - ""
           - "&7Click to view the server rules."
           - ""
-        command: rules
+        click-sound: ITEM_BOOK_PAGE_TURN
+        open: example-rules
       13:
         material: COMPASS
         name: "&a&lNavigation"
         lore:
           - ""
-          - "&7Click to teleport to spawn."
+          - "&7Left-click: spawn"
+          - "&7Right-click: warp menu"
           - ""
-        command: spawn
+        on-click:
+          left:
+            command: spawn
+          right:
+            message: "&7(warp menu placeholder)"
       16:
         material: EMERALD
         name: "&b&lShop"
@@ -111,14 +91,21 @@ guis:
           - ""
           - "&7Click to open the server shop."
           - ""
+        glow: true
+        permission: customguis.shop
         command: shop
 
-  # --- Example 2: A rules display (no click command needed) ---
+  # --- Example 2: A rules display, opened from the help menu ---
   example-rules:
     command: rules
     title: "&c&lServer Rules"
     size: 27
     readonly: true
+
+    border:
+      material: RED_STAINED_GLASS_PANE
+      name: "&r"
+
     items:
       11:
         material: KNOWLEDGE_BOOK
@@ -141,11 +128,16 @@ guis:
           - "&7- No hacked clients."
           - "&7- No disallowed mods."
           - "&7- Report bugs, don't exploit them."
+      22:
+        material: BARRIER
+        name: "&c&lBack"
+        click-sound: UI_BUTTON_CLICK
+        open: example-help
 
   # --- Example 3: A writable trash/disposal inventory ---
   example-trash:
     command: trash
-    title: "&8Trash"
+    title: "&8Trash &7(%player%)"
     size: 54
     readonly: false
     items: {}
